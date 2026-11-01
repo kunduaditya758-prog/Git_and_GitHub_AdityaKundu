@@ -2,5 +2,6 @@
     {"id": 1, "name": "Docker", "category": "Containers"},
     {"id": 2, "name": "Kubernetes", "category": "Orchestration"},
     {"id": 3, "name": "Terraform", "category": "Infrastructure as Code"},
-    {"id": 4, "name": "Jenkins", "category": "CI/CD Server"}
+    {"id": 4, "name": "GitHub Actions", "category": "CI/CD"},
+    {"id": 5, "name": "Prometheus", "category": "Monitoring"}
 ]
