@@ -21,6 +21,21 @@ def api():
         data = json.load(f)
     return jsonify(data)
 
+@app.route("/submittodoitem", methods=["POST"])
+def submit_todo_item():
+    data = request.form or request.get_json(silent=True) or {}
+    item_name = data.get("itemName", "").strip()
+    item_description = data.get("itemDescription", "").strip()
+
+    if not item_name or not item_description:
+        return jsonify({"error": "itemName and itemDescription are required"}), 400
+
+    try:
+        db["todo_items"].insert_one({"itemName": item_name, "itemDescription": item_description})
+        return jsonify({"message": "To-Do item saved successfully"}), 201
+    except Exception as e:
+        return jsonify({"error": f"Could not save item: {e}"}), 500
+
 
 @app.route("/", methods=["GET", "POST"])
 def form():
